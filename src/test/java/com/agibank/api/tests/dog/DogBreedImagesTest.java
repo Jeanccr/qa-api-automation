@@ -136,26 +136,16 @@ public class DogBreedImagesTest extends BaseApiTest {
         public void shouldReturnImagesForSubBreedFrench() {
             logInfo("Testando endpoint com sub-raça");
 
-            // Obtém lista de raças para encontrar uma com sub-raças
-            Response breedsResponse = apiClient.get("/breeds/list/all");
-            String breedsJson = breedsResponse.getBody().asString();
-            BreedsListResponse breedsList = JsonUtil.fromJson(breedsJson, BreedsListResponse.class);
+            // Teste de sub-raça usando endpoint correto: /breed/bulldog/french/images
+            String fullBreedPath = "breed/bulldog/french/images";
+            logInfo("Testando sub-raça: " + fullBreedPath);
 
-            String breed = "bulldog";
-            List<String> subBreeds = breedsList.getSubBreeds(breed);
+            Response response = apiClient.get("/" + fullBreedPath);
 
-            if (!subBreeds.isEmpty()) {
-                String subBreed = subBreeds.get(0);
-                String fullBreedPath = breed + "/" + subBreed;
-                logInfo("Testando sub-raça: " + fullBreedPath);
-
-                Response response = apiClient.get(BREED_IMAGES_ENDPOINT, fullBreedPath);
-
-                response.then()
-                        .statusCode(200)
-                        .body("status", equalTo("success"))
-                        .body("message.size()", greaterThan(0));
-            }
+            response.then()
+                    .statusCode(200)
+                    .body("status", equalTo("success"))
+                    .body("message.size()", greaterThan(0));
         }
     }
 

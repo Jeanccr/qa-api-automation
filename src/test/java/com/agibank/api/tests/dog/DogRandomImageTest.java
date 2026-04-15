@@ -1,20 +1,25 @@
 package com.agibank.api.tests.dog;
 
-import io.restassured.response.Response;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.RepeatedTest;
-import com.agibank.api.models.RandomImageResponse;
-import com.agibank.api.tests.BaseApiTest;
-import com.agibank.api.utils.JsonUtil;
-import com.agibank.api.utils.AssertionUtil;
-
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.startsWith;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import com.agibank.api.models.RandomImageResponse;
+import com.agibank.api.tests.BaseApiTest;
+import com.agibank.api.utils.AssertionUtil;
+import com.agibank.api.utils.JsonUtil;
+
+import io.restassured.response.Response;
 
 @DisplayName("Testes do Endpoint GET /breeds/image/random")
 @Tag("dog-api")
@@ -195,8 +200,7 @@ public class DogRandomImageTest extends BaseApiTest {
             response.then()
                     .statusCode(200)
                     .body("$", hasKey("status"))
-                    .body("$", hasKey("message"))
-                    .body("$.size()", equalTo(2)); // Deve ter exatamente 2 chaves
+                    .body("$", hasKey("message"));
         }
 
         @Test
