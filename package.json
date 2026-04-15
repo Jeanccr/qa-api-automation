@@ -1,0 +1,13 @@
+{
+  "name": "qa-api-automation",
+  "version": "1.0.0",
+  "description": "Projeto de automação de testes de API com Java e RestAssured",
+  "author": "QA Team - Agibank",
+  "keywords": [
+    "api",
+    "automation",
+    "testing",
+    "restassured",
+    "java"
+  ]
+}
