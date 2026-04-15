@@ -28,9 +28,8 @@ qa-api-automation/
 - **RestAssured** 5.3.2 - HTTP Client para testes de API
 - **JUnit 5** 5.9.2 - Framework de testes
 - **Jackson** 2.15.2 - Serialização/Desserialização JSON
-- **Lombok** 1.18.30 - Redução de boilerplate
+- **Lombok** 1.18.28 - Redução de boilerplate
 - **Log4j 2** 2.20.0 - Logging
-- **Allure Reports** 2.21.0 - Relatórios visual
 - **AssertJ** 3.24.1 - Assertions fluentes
 - **Hamcrest** 2.2 - Matchers
 
@@ -77,15 +76,29 @@ mvn clean test -Dtest=ExampleApiTest
 mvn clean test -Dtest=*ApiTest
 ```
 
-### 4. Gerar Relatório Allure
+### 4. Relatórios de Testes
 
+Os testes geram relatórios automáticamente em `target/surefire-reports/`
+
+#### Usar script automatizado (recomendado)
 ```bash
-mvn allure:report
+# Windows
+.\run-tests.bat
+
+# Linux/Mac
+./run-tests.sh
 ```
 
-Abrir relatório:
+Este script:
+1. Limpa o projeto
+2. Compila o código
+3. Executa todos os testes
+4. **Abre o relatório automaticamente**
+
+#### Execução manual
 ```bash
-mvn allure:serve
+mvn clean test
+# Abrir manualmente: target/surefire-reports/
 ```
 
 ## 📝 Criando Testes
@@ -218,11 +231,12 @@ mvn clean test -Dapi.base.url=http://localhost:8080 -Dapi.version=v2
 ### Log4j2
 Logs são salvos em `./logs/qa-api-automation.log`
 
-### Allure
-Relatórios HTML interativos com:
-- Histórico de execuções
-- Gráficos de cobertura
-- Comparações de testes
+### Maven Surefire
+Relatórios XML detalhados em `target/surefire-reports/` com:
+- Resultados de todas as execuções
+- Tempos de execução
+- Stack traces de falhas
+- Integração com IDEs e CI/CD
 
 ## 🛠️ Boas Práticas
 
@@ -239,7 +253,6 @@ Relatórios HTML interativos com:
 
 - [RestAssured Documentation](https://rest-assured.io/)
 - [JUnit 5 Guide](https://junit.org/junit5/docs/current/user-guide/)
-- [Allure Report](https://docs.qameta.io/allure/)
 
 ## 👥 Contribuição
 

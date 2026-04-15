@@ -98,12 +98,16 @@ mvn clean test -Dtest=MyApiTest#testName
 
 ## 5. Relatórios
 
-```bash
-# Gerar relatório Allure
-mvn allure:report
+Os testes geram relatórios automáticamente em `target/surefire-reports/`
 
-# Abrir relatório no navegador
-mvn allure:serve
+```bash
+# Executar testes (abre relatório automaticamente)
+./run-tests.bat  # Windows
+./run-tests.sh   # Linux/Mac
+
+# Ou execução manual
+mvn clean test
+# Relatórios gerados em: target/surefire-reports/
 ```
 
 ---
