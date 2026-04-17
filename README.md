@@ -1,4 +1,4 @@
-# QA API Automation - Agibank
+# QA API Automation 
 
 Projeto profissional de automação de testes de API usando **Java** e **RestAssured**.
 
