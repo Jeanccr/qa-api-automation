@@ -6,16 +6,16 @@ echo Dog API - Testes Automatizados
 echo ========================================
 echo.
 
-REM Limpar e compilar
-echo [1/3] Limpando e compilando projeto...
-mvn clean compile
+REM Compilar
+echo [1/2] Compilando projeto...
+mvn compile
 if %ERRORLEVEL% NEQ 0 (
     echo Erro na compilacao!
     exit /b 1
 )
 
 echo.
-echo [2/3] Executando todos os testes...
+echo [2/2] Executando todos os testes...
 mvn test
 
 echo.
@@ -41,7 +41,7 @@ set REPORTS_PATH=%cd%\target\surefire-reports\index.html
 if exist "%REPORTS_PATH%" (
     echo.
     echo Abrindo: %REPORTS_PATH%
-    start "%REPORTS_PATH%"
+    explorer "%REPORTS_PATH%"
     echo ✓ Relatorio aberto!
 ) else (
     echo.
